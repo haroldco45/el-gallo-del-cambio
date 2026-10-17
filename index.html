@@ -1,1 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Gallo del Cambio — Fábula y realidad</title>
+<meta name="description" content="Una fábula sobre el poder y la corrupción, contada en paralelo con los hechos reales del gobierno 2022–2026 en Colombia, con imágenes y videos.">
+<meta name="theme-color" content="#d71921">
+
+<!-- OG / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="El Gallo del Cambio — Fábula y realidad">
+<meta property="og:description" content="Prometió que el agua sería de todos por igual. La fábula, los hechos reales y una moraleja para hoy.">
+<meta property="og:image" content="https://haroldco45.github.io/el-gallo-del-cambio/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://haroldco45.github.io/el-gallo-del-cambio/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="El Gallo del Cambio — Fábula y realidad">
+<meta name="twitter:description" content="Prometió que el agua sería de todos por igual. La fábula, los hechos reales y una moraleja para hoy.">
+<meta name="twitter:image" content="https://haroldco45.github.io/el-gallo-del-cambio/og-image.png">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Gallo del Cambio">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --rojo:#d71921; --rojo-osc:#a50f16; --negro:#111; --gris:#5c5c5c;
+  --linea:#e6e6e6; --fondo:#fff; --suave:#f6f6f6; --crema:#fff7e8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',system-ui,sans-serif;color:var(--negro);background:var(--fondo);line-height:1.6;font-size:17px}
+img{max-width:100%;display:block}
+a{color:var(--rojo)}
+
+/* Barra superior */
+.top{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--linea)}
+.top-in{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;gap:12px}
+.marca{font-family:'Barlow Condensed';font-weight:800;font-size:20px;letter-spacing:.5px;text-transform:uppercase}
+.marca span{color:var(--rojo)}
+.progreso{position:absolute;left:0;bottom:-1px;height:3px;background:var(--rojo);width:0}
+.modo{display:flex;border:1.5px solid var(--negro);border-radius:999px;overflow:hidden}
+.modo button{border:0;background:#fff;font:600 13px 'Barlow';padding:7px 12px;cursor:pointer}
+.modo button.on{background:var(--negro);color:#fff}
+
+/* Portada */
+.hero{position:relative;color:#fff;background:#000;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38}
+.hero-in{position:relative;max-width:1100px;margin:auto;padding:90px 16px 70px}
+.kicker{display:inline-block;background:var(--rojo);font:700 12px 'Barlow';letter-spacing:2px;text-transform:uppercase;padding:6px 12px;margin-bottom:18px}
+.hero h1{font-family:'Barlow Condensed';font-weight:800;font-size:clamp(46px,9vw,96px);line-height:.95;text-transform:uppercase}
+.hero h1 em{font-style:normal;color:var(--rojo)}
+.hero p{max-width:640px;margin-top:18px;font-size:19px;opacity:.92}
+.hero .btn{margin-top:28px}
+.btn{display:inline-block;background:var(--rojo);color:#fff;text-decoration:none;font:700 15px 'Barlow';letter-spacing:1px;text-transform:uppercase;padding:14px 26px;border:0;cursor:pointer}
+.btn:hover{background:var(--rojo-osc)}
+.btn.neg{background:var(--negro)}
+
+/* Introducción */
+.intro{max-width:760px;margin:auto;padding:56px 16px 10px;text-align:center}
+.intro h2{font-family:'Barlow Condensed';font-size:34px;text-transform:uppercase}
+.intro p{color:var(--gris);margin-top:10px}
+.leyenda{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:22px;font-size:14px;font-weight:600}
+.leyenda i{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:6px}
+
+/* Capítulos */
+.cap{max-width:1100px;margin:auto;padding:48px 16px;border-bottom:1px solid var(--linea)}
+.cap-num{font-family:'Barlow Condensed';font-weight:800;color:var(--rojo);font-size:16px;letter-spacing:3px;text-transform:uppercase}
+.cap h3{font-family:'Barlow Condensed';font-size:clamp(32px,5vw,46px);text-transform:uppercase;line-height:1;margin:6px 0 26px}
+.par{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.fabula{background:var(--crema);border-left:6px solid #e0a526;padding:26px;font-size:18px}
+.fabula .emoji{font-size:44px;line-height:1;margin-bottom:10px}
+.fabula p+p{margin-top:12px}
+.fabula q{font-style:italic;font-weight:600}
+.real{background:#fff;border:1.5px solid var(--negro);padding:0}
+.real-tag{background:var(--negro);color:#fff;font:700 12px 'Barlow';letter-spacing:2px;text-transform:uppercase;padding:8px 14px}
+.real-body{padding:20px}
+.real-body p{font-size:16px}
+.real-body p+p{margin-top:10px}
+.real-body ul{margin:10px 0 0 18px;font-size:15.5px}
+.real-body li{margin-top:4px}
+.fuente{display:block;margin-top:12px;font-size:13px;color:var(--gris)}
+.dato{display:flex;gap:12px;margin:14px 0 2px;flex-wrap:wrap}
+.dato div{flex:1 1 120px;background:var(--suave);padding:12px;border-top:3px solid var(--rojo)}
+.dato b{display:block;font-family:'Barlow Condensed';font-size:28px;line-height:1.1}
+.dato span{font-size:13px;color:var(--gris)}
+
+/* Video tipo "lite" */
+.video{position:relative;aspect-ratio:16/9;background:#000;cursor:pointer;overflow:hidden}
+.video img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:.3s}
+.video:hover img{opacity:1;transform:scale(1.02)}
+.video .play{position:absolute;inset:0;display:grid;place-items:center}
+.video .play span{width:74px;height:52px;background:var(--rojo);border-radius:12px;display:grid;place-items:center}
+.video .play span::after{content:"";border-left:20px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px}
+.video .cap-vid{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(0,0,0,.85));color:#fff;font-size:13.5px;font-weight:600;padding:22px 12px 10px}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* Modos de vista */
+body.solo-fabula .real{display:none}
+body.solo-real .fabula{display:none}
+body.solo-fabula .par, body.solo-real .par{grid-template-columns:1fr;max-width:760px}
+
+/* Galería */
+.galeria{background:var(--negro);color:#fff;padding:56px 16px}
+.galeria-in{max-width:1100px;margin:auto}
+.galeria h2{font-family:'Barlow Condensed';font-size:38px;text-transform:uppercase}
+.galeria h2 em{font-style:normal;color:var(--rojo)}
+.galeria > div > p{opacity:.75;margin:6px 0 24px}
+.grid-vid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+/* Moraleja */
+.moraleja{background:var(--rojo);color:#fff;text-align:center;padding:70px 16px}
+.moraleja small{font:700 13px 'Barlow';letter-spacing:3px;text-transform:uppercase;opacity:.85}
+.moraleja blockquote{font-family:'Barlow Condensed';font-weight:800;font-size:clamp(30px,5vw,50px);line-height:1.05;text-transform:uppercase;max-width:900px;margin:14px auto 22px}
+.moraleja p{max-width:700px;margin:auto;font-size:18px}
+
+/* Balance */
+.balance{max-width:1100px;margin:auto;padding:56px 16px}
+.balance h2{font-family:'Barlow Condensed';font-size:36px;text-transform:uppercase}
+.balance > p{color:var(--gris);margin:6px 0 24px;max-width:760px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.col{border:1.5px solid var(--negro);padding:22px}
+.col h4{font-family:'Barlow Condensed';font-size:22px;text-transform:uppercase;margin-bottom:10px}
+.col.a h4{color:#1d7a3a}
+.col.c h4{color:var(--rojo)}
+.col ul{margin-left:18px;font-size:16px}
+.col li+li{margin-top:8px}
+.aviso{margin-top:20px;background:var(--suave);padding:16px;font-size:15px;border-left:4px solid var(--negro)}
+
+/* Compartir */
+.compartir{text-align:center;padding:10px 16px 60px}
+.compartir .btn{margin:6px}
+
+/* Fuentes */
+.fuentes{background:var(--suave);padding:46px 16px}
+.fuentes-in{max-width:1100px;margin:auto}
+.fuentes h2{font-family:'Barlow Condensed';font-size:28px;text-transform:uppercase;margin-bottom:12px}
+.fuentes ol{columns:2;gap:30px;margin-left:18px;font-size:14.5px}
+.fuentes li{margin-bottom:6px;break-inside:avoid}
+
+.instalar{position:fixed;left:16px;right:16px;bottom:16px;z-index:60;max-width:460px;margin:auto;background:var(--negro);color:#fff;display:none;align-items:center;gap:12px;padding:12px 14px;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.instalar.ver{display:flex}
+.instalar img{width:42px;height:42px}
+.instalar div{flex:1;font-size:14px;line-height:1.3}
+.instalar b{display:block;font-size:15px}
+.instalar button{border:0;cursor:pointer;font:700 13px 'Barlow';text-transform:uppercase;padding:9px 12px}
+.instalar .si{background:var(--rojo);color:#fff}
+.instalar .no{background:transparent;color:#aaa;padding:9px 6px}
+
+footer{background:var(--negro);color:#bbb;text-align:center;padding:26px 16px;font-size:14px}
+footer b{color:#fff}
+
+.oculto{opacity:0;transform:translateY(24px);transition:.7s ease}
+.visto{opacity:1;transform:none}
+
+@media(max-width:820px){
+  .par,.cols{grid-template-columns:1fr}
+  .grid-vid{grid-template-columns:1fr}
+  .fuentes ol{columns:1}
+  .hero-in{padding:64px 16px 54px}
+  .modo button{padding:7px 9px;font-size:12px}
+  .marca{font-size:17px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="marca">El Gallo <span>del Cambio</span></div>
+    <div class="modo" role="group" aria-label="Modo de lectura">
+      <button data-modo="ambas" class="on">Ambas</button>
+      <button data-modo="solo-fabula">Fábula</button>
+      <button data-modo="solo-real">Realidad</button>
+    </div>
+  </div>
+  <div class="progreso" id="progreso"></div>
+</header>
+
+<section class="hero">
+  <img src="https://i.ytimg.com/vi/YSyU70MRQ00/hqdefault.jpg" alt="" onerror="this.remove()">
+  <div class="hero-in">
+    <div class="kicker">Fábula · Colombia 2022–2026</div>
+    <h1>El Gallo<br>del <em>Cambio</em></h1>
+    <p>Prometió que el agua de la sabana sería de todos por igual. Esta es su historia, contada al lado de los hechos reales que la inspiran.</p>
+    <a href="#cap1" class="btn">Empezar a leer</a>
+  </div>
+</section>
+
+<section class="intro">
+  <h2>Cómo leer esta fábula</h2>
+  <p>Cada capítulo tiene dos columnas: a la izquierda, la fábula; a la derecha, lo que pasó en la vida real, con imágenes, videos y fuentes. Arriba puedes elegir leer solo una de las dos.</p>
+  <div class="leyenda">
+    <span><i style="background:#e0a526"></i>La fábula</span>
+    <span><i style="background:#111"></i>La vida real</span>
+  </div>
+</section>
+
+<!-- CAPÍTULO I -->
+<section class="cap" id="cap1">
+  <div class="cap-num">Capítulo I</div>
+  <h3>La promesa</h3>
+  <div class="par">
+    <div class="fabula oculto">
+      <div class="emoji">🐊💧</div>
+      <p>En la sabana, los caimanes llevaban años quedándose con el agua del pozo. Las iguanas del desierto morían de sed y nadie respondía.</p>
+      <p>Un día subió a la cerca el Gallo, y cantó más fuerte que nadie: <q>¡Conmigo se acaba el robo! ¡El agua será de todos por igual!</q></p>
+      <p>Los animales, cansados de los caimanes, le creyeron y lo eligieron jefe de la sabana.</p>
+    </div>
+    <div class="real oculto">
+      <div class="real-tag">En la vida real</div>
+      <div class="real-body">
+        <p>En 2022 Gustavo Petro ganó la Presidencia con un fuerte discurso contra la corrupción; prometió "derrocar el régimen corrupto". Fue el primer gobierno de izquierda del país, del 7 de agosto de 2022 al 7 de agosto de 2026.</p>
+        <p>Su Plan Nacional de Desarrollo, "Colombia, potencia mundial de la vida", incluyó una Estrategia Nacional de Lucha contra la Corrupción.</p>
+        <span class="fuente">Fuentes: El Tiempo, La República, Transparencia por Colombia.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPÍTULO II -->
+<section class="cap" id="cap2">
+  <div class="cap-num">Capítulo II</div>
+  <h3>El grano de más</h3>
+  <div class="par">
+    <div class="fabula oculto">
+      <div class="emoji">🌾🦉</div>
+      <p>Lo que pocos sabían es que, para ganar, los ayudantes del Gallo habían sacado de la bodega más grano del que las reglas permitían, y aceptado sacos de quienes tenían prohibido darlos.</p>
+      <p>Cuando el Consejo de los Búhos revisó las cuentas y multó a sus ayudantes, el Gallo infló el pecho y cantó: <q>¡Esto es un complot de los caimanes!</q></p>
+    </div>
+    <div class="real oculto">
+      <div class="real-tag">En la vida real</div>
+      <div class="video" data-id="s8ooySphDhs" data-title="Debate en Semana tras el fallo del CNE">
+        <img src="https://i.ytimg.com/vi/s8ooySphDhs/hqdefault.jpg" alt="Debate sobre el fallo del CNE" loading="lazy">
+        <div class="play"><span></span></div>
+        <div class="cap-vid">▶ Debate en Semana tras el fallo del CNE</div>
+      </div>
+      <div class="real-body">
+        <p>El Consejo Nacional Electoral concluyó, por 6 votos contra 3, que la campaña "Petro Presidente 2022" superó los topes de gasto en las dos vueltas y recibió aportes de fuentes prohibidas, como Fecode y la USO. Fue la primera vez que se sancionó una campaña presidencial en Colombia.</p>
+        <div class="dato">
+          <div><b>+$3.500 M</b><span>sobre el tope, según el CNE</span></div>
+          <div><b>29 abr 2026</b><span>la sanción quedó en firme</span></div>
+        </div>
+        <p>Las multas recayeron en el gerente de campaña, Ricardo Roa, la tesorera y la auditora. La Corte Constitucional dijo que el CNE no podía juzgar al presidente en persona. Petro rechazó el fallo, dijo que no hubo plata del narcotráfico y lo llamó una persecución de la oposición.</p>
+        <span class="fuente">Fuentes: EFE / Swissinfo, El País Cali, Portafolio, Publimetro.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPÍTULO III -->
+<section class="cap" id="cap3">
+  <div class="cap-num">Capítulo III</div>
+  <h3>Las carretas de agua</h3>
+  <div class="par">
+    <div class="fabula oculto">
+      <div class="emoji">🦎🚚</div>
+      <p>Para las iguanas sedientas, los ayudantes del Gallo compraron cuarenta carretas gigantes de agua. Costaron mucho más de lo que valían, y eran tan pesadas que se hundían en la arena del desierto.</p>
+      <p>Pasaron meses quietas en un corral, mientras las iguanas seguían esperando.</p>
+      <p>Con el tiempo se supo que parte del grano se había usado, según contaron los mismos ayudantes, para convencer a los gallinazos del concejo de votar lo que el Gallo quería.</p>
+    </div>
+    <div class="real oculto">
+      <div class="real-tag">En la vida real</div>
+      <div class="video" data-id="dWTaTFfoJuc" data-title="Los carrotanques parados en La Guajira">
+        <img src="https://i.ytimg.com/vi/dWTaTFfoJuc/hqdefault.jpg" alt="Carrotanques de la UNGRD en La Guajira" loading="lazy">
+        <div class="play"><span></span></div>
+        <div class="cap-vid">▶ Los carrotanques parados en La Guajira</div>
+      </div>
+      <div class="real-body">
+        <p>La Unidad Nacional para la Gestión del Riesgo (UNGRD) compró 40 carrotanques para llevar agua a La Guajira por unos $46.800 millones. Quedaron parqueados meses en Uribia, y un video viral mostró uno enterrado en la arena por su peso.</p>
+        <div class="dato">
+          <div><b>40</b><span>carrotanques</span></div>
+          <div><b>$46.800 M</b><span>valor del contrato</span></div>
+          <div><b>$11.114 M</b><span>sobrecostos hallados</span></div>
+        </div>
+        <ul>
+          <li>El exdirector Olmedo López aceptó responsabilidad por concierto para delinquir y peculado.</li>
+          <li>El exsubdirector Sneyder Pinilla fue el primer condenado.</li>
+          <li>El contratista alias "el Pastuso" fue condenado a 6 años y 8 meses.</li>
+          <li>Según Pinilla, hubo presuntos pagos a congresistas para aprobar reformas; la Corte Suprema investiga a varios.</li>
+          <li>Cinco altos funcionarios salieron del gobierno por el caso. Al exdirector del Dapre, Carlos Ramón González, se le imputaron cargos; su defensa los niega.</li>
+        </ul>
+        <span class="fuente">Fuentes: Asuntos Legales, Infobae, Telemedellín, Noticias RCN, Publimetro, La FM.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPÍTULO IV -->
+<section class="cap" id="cap4">
+  <div class="cap-num">Capítulo IV</div>
+  <h3>La garza que habló</h3>
+  <div class="par">
+    <div class="fabula oculto">
+      <div class="emoji">🦩📢</div>
+      <p>Una joven garza, de las más cercanas al Gallo, vio cosas que no le gustaron dentro del corral, y las contó en voz alta.</p>
+      <p>En lugar de agradecerle y revisar, el Gallo la señaló de mentirosa y traidora, y la sacó del corral.</p>
+      <p>Desde entonces, los demás animales del corral aprendieron a callar.</p>
+    </div>
+    <div class="real oculto">
+      <div class="real-tag">En la vida real</div>
+      <div class="video" data-id="YSyU70MRQ00" data-title="Semana: los 40 carrotanques, la prueba">
+        <img src="https://i.ytimg.com/vi/YSyU70MRQ00/hqdefault.jpg" alt="Informe de Semana sobre los carrotanques" loading="lazy">
+        <div class="play"><span></span></div>
+        <div class="cap-vid">▶ Semana: los 40 carrotanques, "la prueba"</div>
+      </div>
+      <div class="real-body">
+        <p>Angie Rodríguez, exdirectora del Dapre y gerente del Fondo Adaptación, denunció presuntas irregularidades en el alto gobierno. Fue declarada insubsistente desde el 1 de agosto de 2026.</p>
+        <p>Petro anunció una denuncia penal contra ella por calumnia; ella, a su vez, lo denunció ante la Comisión de Acusación. Ambos procesos están abiertos.</p>
+        <p>Transparencia por Colombia criticó que el presidente descalificara públicamente a denunciantes de su propio gobierno, porque eso debilita la confianza de quienes quieren denunciar.</p>
+        <span class="fuente">Fuentes: El País Cali, Swissinfo / EFE, Portafolio, El Tiempo.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPÍTULO V -->
+<section class="cap" id="cap5">
+  <div class="cap-num">Capítulo V</div>
+  <h3>El letrero borrado</h3>
+  <div class="par">
+    <div class="fabula oculto">
+      <div class="emoji">🪧🐓</div>
+      <p>En la pared del pozo, el Gallo había hecho pintar una regla: <q>Quien robe el agua de la sabana será expulsado.</q></p>
+      <p>Una mañana apareció, en letra pequeñita, un añadido: <q>…salvo que sea por el cambio.</q></p>
+      <p>Al final, las iguanas, todavía con sed, miraron al Gallo y miraron a los caimanes… y ya no supieron distinguir cuál era cuál.</p>
+    </div>
+    <div class="real oculto">
+      <div class="real-tag">En la vida real</div>
+      <div class="real-body">
+        <p>En agosto de 2026, Transparencia por Colombia calificó como <b>deficiente</b> la gestión anticorrupción del cuatrienio: hubo discurso fuerte y algunas medidas, pero no cambios estructurales ni un liderazgo sostenido.</p>
+        <div class="dato">
+          <div><b>Deficiente</b><span>balance de Transparencia por Colombia</span></div>
+          <div><b>71%</b><span>promesas del PND sin cumplir, según informe de la representante Luz Pastrana</span></div>
+        </div>
+        <p>La organización sí reconoció avances: la Línea 157 para denunciar corrupción, el Sistema Nacional de Integridad y la consolidación del SECOP II. Desde el Gobierno se respondió que muchas promesas son de largo plazo.</p>
+        <span class="fuente">Fuentes: Transparencia por Colombia, Pulzo, Blu Radio, Colombia.com.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section class="galeria">
+  <div class="galeria-in">
+    <h2>Mírelo <em>usted mismo</em></h2>
+    <p>Los videos reales, todos en un solo lugar. Toque para reproducir.</p>
+    <div class="grid-vid">
+      <div class="video" data-id="dWTaTFfoJuc" data-title="Carrotanques parados en La Guajira">
+        <img src="https://i.ytimg.com/vi/dWTaTFfoJuc/hqdefault.jpg" alt="" loading="lazy">
+        <div class="play"><span></span></div>
+        <div class="cap-vid">▶ Carrotanques parados en La Guajira</div>
+      </div>
+      <div class="video" data-id="YSyU70MRQ00" data-title="Semana: los 40 carrotanques">
+        <img src="https://i.ytimg.com/vi/YSyU70MRQ00/hqdefault.jpg" alt="" loading="lazy">
+        <div class="play"><span></span></div>
+        <div class="cap-vid">▶ Semana: los 40 carrotanques</div>
+      </div>
+      <div class="video" data-id="s8ooySphDhs" data-title="El fallo del CNE">
+        <img src="https://i.ytimg.com/vi/s8ooySphDhs/hqdefault.jpg" alt="" loading="lazy">
+        <div class="play"><span></span></div>
+        <div class="cap-vid">▶ El fallo del CNE, en debate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MORALEJA -->
+<section class="moraleja" id="moraleja">
+  <small>Moraleja para hoy</small>
+  <blockquote>Al que promete acabar con los caimanes también hay que vigilarlo</blockquote>
+  <p>La sed del pueblo no distingue colores. No basta con votar contra el de antes: la veeduría ciudadana tiene que ser igual de exigente con el gobierno que se fue, con el que está y con el que venga. Pida cuentas, revise el SECOP, denuncie en la Línea 157 y no le crea al que canta más fuerte, sino al que rinde cuentas claras.</p>
+</section>
+
+<!-- BALANCE -->
+<section class="balance">
+  <h2>⚖️ Para ser justos</h2>
+  <p>Una fábula exagera para enseñar. La realidad tiene más matices: el mismo gobierno tuvo resultados que sus defensores destacan y otros que sus críticos señalan.</p>
+  <div class="cols">
+    <div class="col a">
+      <h4>Lo que destacan sus defensores</h4>
+      <ul>
+        <li>El desempleo bajó de cerca del 11% en 2022 a menos del 9% en 2026.</li>
+        <li>La gratuidad universitaria llegó al 97% de los estudiantes y más de 425.000 jóvenes entraron a la educación superior.</li>
+        <li>El presupuesto de educación creció 39% real frente a 2022.</li>
+        <li>Se cumplió la promesa de frenar nuevos contratos de exploración petrolera.</li>
+      </ul>
+    </div>
+    <div class="col c">
+      <h4>Lo que señalan sus críticos</h4>
+      <ul>
+        <li>Cerca de 54.866 homicidios en el cuatrienio, más que en los dos gobiernos anteriores en periodos comparables.</li>
+        <li>El déficit de las EPS pasó de $2,33 a $18,7 billones.</li>
+        <li>La economía se frenó y cerró alrededor del 2,6% en 2026.</li>
+        <li>La agenda anticorrupción fue calificada como deficiente.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="aviso"><b>Importante:</b> varios casos siguen en los juzgados. Una imputación o una denuncia no es una condena; cada persona mencionada conserva la presunción de inocencia hasta que haya fallo en firme.</div>
+</section>
+
+<div class="compartir">
+  <button class="btn" id="btnWa">Compartir por WhatsApp</button>
+  <button class="btn neg" id="btnCopiar">Copiar enlace</button>
+</div>
+
+<!-- FUENTES -->
+<section class="fuentes">
+  <div class="fuentes-in">
+    <h2>Fuentes</h2>
+    <ol>
+      <li><a href="https://www.eltiempo.com/politica/gobierno/gobierno-petro-incumplio-sus-principales-promesas-anticorrupcion-segun-informe-de-transparencia-por-colombia-escandalos-mancharon-el-discurso-3575881" target="_blank" rel="noopener">El Tiempo — Balance anticorrupción</a></li>
+      <li><a href="https://transparenciacolombia.org.co/wp-content/uploads/2026/08/Comunicado-06-Balance-gob2022-2026.pdf" target="_blank" rel="noopener">Transparencia por Colombia — Comunicado 6-2026</a></li>
+      <li><a href="https://www.pulzo.com/nacion/transparencia-por-colombia-califico-deficiente-lucha-anticorrupcion-petro-PP5264411" target="_blank" rel="noopener">Pulzo — Gestión "deficiente"</a></li>
+      <li><a href="https://www.bluradio.com/politica/tareas-anticorrupcion-del-gobierno-petro-quedaron-incompletas-transparencia-por-colombia-rg10" target="_blank" rel="noopener">Blu Radio — Tareas incompletas</a></li>
+      <li><a href="https://www.swissinfo.ch/spa/autoridad-electoral-confirma-sanci%C3%B3n-a-la-campa%C3%B1a-de-petro" target="_blank" rel="noopener">EFE / Swissinfo — Sanción CNE en firme</a></li>
+      <li><a href="https://www.elpais.com.co/colombia/cne-rechazo-los-ataques-dirigidos-contra-magistrados-por-sancion-a-la-campana-petro-presidente-2022-2821.html" target="_blank" rel="noopener">El País Cali — Fallo 6-3 del CNE</a></li>
+      <li><a href="https://www.publimetro.co/noticias/2025/08/26/cne-presentara-ponencia-que-concluye-que-campana-de-petro-violo-topes-electorales-en-2022-y-pide-sancion-a-ricardo-roa/" target="_blank" rel="noopener">Publimetro — Corte Constitucional y el CNE</a></li>
+      <li><a href="https://www.portafolio.co/economia/gobierno/petro-rechaza-sancion-del-cne-a-miembros-de-su-campana-presidencial-de-2022-es-la-oposicion-multandonos-483832" target="_blank" rel="noopener">Portafolio — Petro rechaza la sanción</a></li>
+      <li><a href="https://www.asuntoslegales.com.co/actualidad/tribunal-confirma-condena-a-contratista-por-corrupcion-en-caso-de-la-ungrd-4465322" target="_blank" rel="noopener">Asuntos Legales — Condena y sobrecostos UNGRD</a></li>
+      <li><a href="https://www.asuntoslegales.com.co/actualidad/los-cinco-funcionarios-del-gobierno-petro-que-han-salido-por-escandalo-de-la-ungrd-4014455" target="_blank" rel="noopener">Asuntos Legales — Cinco funcionarios fuera</a></li>
+      <li><a href="https://telemedellin.tv/?p=179864" target="_blank" rel="noopener">Telemedellín — Olmedo López acepta</a></li>
+      <li><a href="https://www.infobae.com/colombia/2025/06/18/condenan-a-mas-6-anos-de-carcel-al-contratista-luis-eduardo-lopez-rosero-alias-el-pastuso-por-escandalo-de-corrupcion-de-la-ungrd/" target="_blank" rel="noopener">Infobae — Condena a "el Pastuso"</a></li>
+      <li><a href="https://www.noticiasrcn.com/colombia/condenan-a-sneyder-pinilla-por-corrupcion-en-la-ungrd-876401" target="_blank" rel="noopener">Noticias RCN — Primer condenado</a></li>
+      <li><a href="https://www.publimetro.co/noticias/2024/02/27/en-video-carrotanque-de-la-ungrd-se-quedo-hundido-en-la-arena-del-desierto-en-la-guajira/" target="_blank" rel="noopener">Publimetro — Carrotanque hundido</a></li>
+      <li><a href="https://www.elpais.com.co/politica/angie-rodriguez-es-declarada-insubsistente-tras-denunciar-presunta-corrupcion-en-el-gobierno-petro-0123.html" target="_blank" rel="noopener">El País Cali — Angie Rodríguez insubsistente</a></li>
+      <li><a href="https://www.swissinfo.ch/spa/una-alta-funcionaria-colombiana-denuncia-a-petro-por-presunta-injuria-y-otros-delitos/91818619" target="_blank" rel="noopener">EFE / Swissinfo — Denuncia de Angie Rodríguez</a></li>
+      <li><a href="https://www.diariodelsur.com.co/?p=611901" target="_blank" rel="noopener">Diario del Sur — Balance economía, salud, seguridad</a></li>
+      <li><a href="https://www.colombia.com/actualidad/politica/gustavo-petro-solo-ha-cumplido-el-29-de-sus-promesas-579392" target="_blank" rel="noopener">Colombia.com — Informe de promesas</a></li>
+      <li><a href="https://www.larepublica.co/especiales/los-ultimos-100-dias-de-petro/que-se-cumplio-que-no-y-que-quedo-a-medias-en-los-cuatro-anos-del-gobierno-4379423" target="_blank" rel="noopener">La República — Qué se cumplió y qué no</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  <b>Desarrollada por Vibras Positivas HM — Derechos de Autor Reservados</b><br>
+  Caucasia, Antioquia · <span id="fecha"></span><br>
+  <small>Fábula original con fines pedagógicos y de reflexión ciudadana. Los videos pertenecen a sus respectivos medios.</small>
+</footer>
+
+<div class="instalar" id="instalar">
+  <img src="icon-192.png" alt="">
+  <div><b>Instale la app</b>Léala sin conexión desde su pantalla de inicio</div>
+  <button class="si" id="btnInstalar">Instalar</button>
+  <button class="no" id="btnNo" aria-label="Cerrar">✕</button>
+</div>
+
+<script>
+// PWA: service worker
+if('serviceWorker' in navigator){
+  addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+}
+
+// PWA: invitación a instalar
+let aviso=null;
+const caja=document.getElementById('instalar');
+addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault(); aviso=e;
+  try{ if(localStorage.getItem('gallo-no-instalar')) return; }catch(err){}
+  setTimeout(()=>caja.classList.add('ver'),4000);
+});
+document.getElementById('btnInstalar').onclick=async()=>{
+  caja.classList.remove('ver');
+  if(!aviso) return;
+  aviso.prompt(); await aviso.userChoice; aviso=null;
+};
+document.getElementById('btnNo').onclick=()=>{
+  caja.classList.remove('ver');
+  try{ localStorage.setItem('gallo-no-instalar','1'); }catch(err){}
+};
+addEventListener('appinstalled',()=>caja.classList.remove('ver'));
+
+// Modo de lectura
+document.querySelectorAll('.modo button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.modo button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    document.body.classList.remove('solo-fabula','solo-real');
+    if(b.dataset.modo!=='ambas') document.body.classList.add(b.dataset.modo);
+  });
+});
+
+// Videos: se cargan solo al tocar (más rápido en celular)
+document.querySelectorAll('.video').forEach(v=>{
+  v.addEventListener('click',()=>{
+    if(v.querySelector('iframe')) return;
+    const f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+v.dataset.id+'?autoplay=1&rel=0';
+    f.title=v.dataset.title||'Video';
+    f.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+    f.allowFullscreen=true;
+    v.innerHTML='';v.appendChild(f);
+  });
+  const img=v.querySelector('img');
+  if(img) img.onerror=()=>{img.style.display='none'};
+});
+
+// Barra de progreso de lectura
+const prog=document.getElementById('progreso');
+addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+},{passive:true});
+
+// Aparición suave
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visto');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.oculto').forEach(el=>io.observe(el));
+
+// Compartir
+const url=location.href.startsWith('http')?location.href:'https://haroldco45.github.io/el-gallo-del-cambio/';
+document.getElementById('btnWa').onclick=()=>{
+  const t='🐓 El Gallo del Cambio — una fábula sobre el poder, con los hechos reales al lado. Léala y saque sus conclusiones: '+url;
+  open('https://wa.me/?text='+encodeURIComponent(t),'_blank');
+};
+document.getElementById('btnCopiar').onclick=async e=>{
+  try{await navigator.clipboard.writeText(url);e.target.textContent='¡Enlace copiado!'}
+  catch(err){prompt('Copie el enlace:',url)}
+};
+
+// Fecha en hora de Colombia
+document.getElementById('fecha').textContent=new Date().toLocaleDateString('es-CO',{timeZone:'America/Bogota',year:'numeric',month:'long',day:'numeric'});
+</script>
+</body>
+</html>
 
